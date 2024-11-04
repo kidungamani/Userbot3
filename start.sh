@@ -14,4 +14,5 @@ apt install npm -y
 npm install pm2 -g
 
 # Start & Save pm2
+pm2 start "python bot.py" --name userbot3
 pm2 save
