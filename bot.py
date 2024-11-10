@@ -1,7 +1,6 @@
 import os, sys, asyncio, time, logging 
 from pyrogram import Client, idle
 from config import Config, Color
-#from pytgcalls import PyTgCalls
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -12,9 +11,7 @@ CLIENTS = [Client(
     api_id=Config.API_ID,
     api_hash=Config.API_HASH,
     plugins=dict(root="plugins"),                
-    workers=min(32, os.cpu_count() + 4),
     app_version=f'KiduUserBot-{client_id}',
-    sleep_threshold=15,
 ) for client_id, session in enumerate(Config.USER_SESSIONS)]
 
 
@@ -24,7 +21,6 @@ async def start_clients():
         try:
             await User.start() 
             logger.info(Color.bold + f"\n\n{Color.green}ᴄʟɪᴇɴᴛ-{_Id} ɪꜱ ꜱᴛᴀʀᴛᴇᴅ ✓\n\n{Color.reset}")
-            #User.pytgcalls = PyTgCalls(User, cache_duration=180)
             await User.send_message('self', '**I am Started ✨**')
             Success += 1
         except Exception as e:

@@ -1,5 +1,4 @@
 import os, sys, logging, time, asyncio
-from utils import get_time
 from pyrogram import Client, filters, enums
 from pyrogram.errors import InputUserDeactivated, FloodWait, UserIsBlocked, PeerIdInvalid
 
@@ -71,3 +70,14 @@ async def broadcast_messages(client, message, user_id):
         return False
         
         
+def get_time(seconds):
+    periods = [('ᴅ', 86400), ('ʜ', 3600), ('ᴍ', 60), ('ꜱ', 1)]
+    result = ''
+    for period_name, period_seconds in periods:
+        if seconds >= period_seconds:
+            period_value, seconds = divmod(seconds, period_seconds)
+            result += f'{int(period_value)}{period_name}'
+    return result        
+    
+    
+    

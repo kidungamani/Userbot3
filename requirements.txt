@@ -1,6 +1,3 @@
 pyrofork==2.3.40
 TgCrypto==1.2.5
-#pytgcalls==2.1.0
-#tgcalls==2.0.0
-pytz
 

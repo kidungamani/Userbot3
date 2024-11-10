@@ -12,20 +12,7 @@ class Config:
         "AQGRuPAAMAOLyaUh2NujGsX6PabthtI_-A2vpMK3PHyX78Muam2t7FthluIPrlGScN2sl8RemjmPFLhiWyC-jIvSI65ejKU2r5f659-SF2Y2cnIYcka_TrTDVv4CqmmDT2HvchyQ0Ls3nP2Z3GFMXgXJ6lV3lI-PalloDuiQxtPY8a5-uiIa5nRj-0QuXQComspvZbUgHeDmPuGYg-Gf2-lKqCX5vJm_i6tcHym-S6O_CUBgiS2vO_5A3w9bZ2gECubupZx_rf1nZzWFku_5igUa4cyeVLrI1X6cO1ToIKB6EGPBROKRlXsJ_6F8VVp0aMNssLNxKMMZzHi7QRolm3EfHsxp6wAAAAHO40SZAA",
     ]
     
-    GROUPS = [
-        -1002240859136, #ultra (0)
-        -1002240476780, #24x7 (1)
-        -1002444697421, #kerala (2)
-        -1002244220832, #hijabi (3)
-        -1002203674296, #pdf (4)
-        -1002214157403, #foreign (5)
-        -1001945623510, #nila (6)
-        -1002061016678, #reshmi (7)
-        -1002091217696, #webseries (8)
-        -1002267153856, #padakkam (9)
-    ]
-    
-    
+
 class Color:
     reset = '\033[0m'       # Reset all attributes
     bold = '\033[01m'       # Bold text
