@@ -25,6 +25,7 @@ async def send_message_for_requests(client, message):
             return await message.reply_text("**Invalid skip value. Please enter a valid number.**", quote=True)
     
     # Iterate over chat join requests
+    tasks = []
     async for request in client.get_chat_join_requests(chat_id):
         if skip > 0:
             skip -= 1
@@ -33,18 +34,17 @@ async def send_message_for_requests(client, message):
             continue
         
         user_id = request.user.id
-        out = await broadcast_messages(client, message.reply_to_message, user_id)
-        if out: success += 1
-        else: failed += 1
-        
+        tasks.append(broadcast_messages(client, message.reply_to_message, user_id))
         done += 1
-        # Update status message after every 20 messages
-        if done % 20 == 0:
-            try:
-                await sts.edit(f"**⟳ ꜱᴇɴᴛ ɪɴ ᴩʀᴏɢʀᴇss:\n\nᴄᴏᴍᴩʟᴇᴛᴇᴅ: `{done}` \nꜱᴜᴄᴄᴇꜱꜱ: `{success}` \nꜰᴀɪʟᴇᴅ: `{failed}` \nꜱᴋɪᴩᴩᴇᴅ: `{skipped}`**")
-            except:
-                pass
-    
+        if len(tasks) % 10 == 0:  
+            results = await asyncio.gather(*tasks)
+            tasks = []
+            success += results.count(True)
+            failed += results.count(False)
+            try: await sts.edit(f"**⟳ ꜱᴇɴᴛ ɪɴ ᴩʀᴏɢʀᴇss:\n\nᴄᴏᴍᴩʟᴇᴛᴇᴅ: `{done}` \nꜱᴜᴄᴄᴇꜱꜱ: `{success}` \nꜰᴀɪʟᴇᴅ: `{failed}` \nꜱᴋɪᴩᴩᴇᴅ: `{skipped}`**")
+            except: pass
+            await asyncio.sleep(2)
+        
     await sts.delete()
     await message.reply_text(f"**✓ ꜱᴇɴᴛ ᴄᴏᴍᴩʟᴇᴛᴇᴅ ɪɴ {get_time(int(time.time() - start_time))}: \n\nᴄᴏᴍᴩʟᴇᴛᴇᴅ: `{done}` \nꜱᴜᴄᴄᴇꜱꜱ: `{success}` \nꜰᴀɪʟᴇᴅ: `{failed}` \nꜱᴋɪᴩᴩᴇᴅ: `{skipped}`**", quote=True)
 
