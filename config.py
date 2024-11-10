@@ -5,8 +5,10 @@ class Config:
     API_HASH = "eea78eb9fa01f4e590d5202ffc4fe989"
  
     USER_SESSIONS = [
-
+        
+        # account name
         "AQFPgW4AOVt6KR7C6NAt6eVir8AF21RS_H4mVytfICEJyutgxSliEXf16jwHFVbrpAxj1sIYgg1DgqgzJqSwiBmAyCL6Zc0-BROo3wRPYvx0lwRogH92tNM-3SQjofKikeMTBuH55fn56NvZ_Cn2WXnYgtWsxziE8M3Z1dp9wN2mbSb1Y93w3PryRENfvFTvhqgtcMy01zS3-wt1XemLjvPF0jXTiui6R5Z0aTZf1XtUEVYRgc4Ow94556MoGIeMqulh7wu1e2fHnV3JvKnSFZPTjCkeiSMPC54uabE04W5bJq8xh0GZL0wfuOgvEctRRps7Sjmf3q-LpyMzNqUnmvVFNZQxvAAAAAHMOABbAA",
+
     ]
     
 
